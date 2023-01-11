@@ -2,9 +2,9 @@
 % Please edit documentation in R/fitdist.R
 \name{multi_fitdist}
 \alias{multi_fitdist}
-\title{Fits multiple distributions}
+\title{Maximum likelihood fitting of multiple distributions}
 \usage{
-multi_fitdist(data, models, method = "mle")
+multi_fitdist(data, models)
 }
 \arguments{
 \item{data}{A numeric vector of values}
@@ -12,16 +12,16 @@ multi_fitdist(data, models, method = "mle")
 \item{models}{A character string or vector of character strings
 specifying the names of the candidate models. This follows the R naming
 convention for distributions, the density function is `d[name]`.}
-
-\item{method}{A character string for the method of model fitting.
-See `?fitdistrplus::fitdist` for details.}
 }
 \value{
 A data frame of all models
 }
 \description{
-Fits multiple distributions
+Maximum likelihood fitting of multiple distributions
 }
 \examples{
-stub
+multi_fitdist(
+  data = rgamma(n = 100, shape = 1, scale = 1),
+  models = c("gamma", "weibull", "lnorm")
+)
 }

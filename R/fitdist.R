@@ -1,18 +1,19 @@
-#' Fits multiple distributions
+#' Maximum likelihood fitting of multiple distributions
 #'
 #' @param data A numeric vector of values
 #' @param models A character string or vector of character strings
 #' specifying the names of the candidate models. This follows the R naming
 #' convention for distributions, the density function is `d[name]`.
-#' @param method A character string for the method of model fitting.
-#' See `?fitdistrplus::fitdist` for details.
 #'
 #' @return A data frame of all models
 #' @export
 #'
 #' @examples
-#' stub
-multi_fitdist <- function(data, models, method = "mle") {
+#' multi_fitdist(
+#'   data = rgamma(n = 100, shape = 1, scale = 1),
+#'   models = c("gamma", "weibull", "lnorm")
+#' )
+multi_fitdist <- function(data, models) {
 
   # fit distributions to data
   if (is.data.frame(data)) {
@@ -26,15 +27,14 @@ multi_fitdist <- function(data, models, method = "mle") {
     res <- lapply(
       models,
       fitdistrplus::fitdist,
-      data = data,
-      method = method
+      data = data
     )
   }
 
   # extract loglikelihood, aic and bic
-  loglik <- sapply(fitdist, "[[", "loglik")
-  aic <- sapply(fitdist, "[[", "aic")
-  bic <- sapply(fitdist, "[[", "bic")
+  loglik <- sapply(res, "[[", "loglik")
+  aic <- sapply(res, "[[", "aic")
+  bic <- sapply(res, "[[", "bic")
 
   # package results into data frame
   res <- data.frame(models = models, loglik = loglik, aic = aic, bic = bic)
@@ -55,8 +55,13 @@ multi_fitdist <- function(data, models, method = "mle") {
 #' @export
 #'
 #' @examples
-#' stub
-goodness_of_fit <- function(data, models, method = "mle") {
+#' goodness_of_fit(
+#'   data = rgamma(n = 100, shape = 1, scale = 1),
+#'   models = c('gamma', 'weibull', 'lnorm')
+#' )
+goodness_of_fit <- function(data, models) {
+
+  fitdist <- vector("list", length(models))
   # fit distributions to data
   if (is.data.frame(data)) {
     fitdist <- lapply(
@@ -68,8 +73,7 @@ goodness_of_fit <- function(data, models, method = "mle") {
     fitdist <- lapply(
       models,
       fitdistrplus::fitdist,
-      data = data,
-      method = method
+      data = data
     )
   }
 

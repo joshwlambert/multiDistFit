@@ -4,7 +4,7 @@
 \alias{goodness_of_fit}
 \title{Calculates the goodness-of-fit statistics for the fitted distributions}
 \usage{
-goodness_of_fit(data, models, method = "mle")
+goodness_of_fit(data, models)
 }
 \arguments{
 \item{data}{A numeric vector of values}
@@ -12,9 +12,6 @@ goodness_of_fit(data, models, method = "mle")
 \item{models}{A character string or vector of character strings
 specifying the names of the candidate models. This follows the R naming
 convention for distributions, the density function is `d[name]`.}
-
-\item{method}{A character string for the method of model fitting.
-See `?fitdistrplus::fitdist` for details.}
 }
 \value{
 A `gofstat.fitdist` object from the `{fitdistrplus}` package
@@ -23,5 +20,8 @@ A `gofstat.fitdist` object from the `{fitdistrplus}` package
 Calculates the goodness-of-fit statistics for the fitted distributions
 }
 \examples{
-stub
+goodness_of_fit(
+  data = rgamma(n = 100, shape = 1, scale = 1),
+  models = c('gamma', 'weibull', 'lnorm')
+)
 }
