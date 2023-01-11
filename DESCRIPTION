@@ -1,16 +1,19 @@
 Package: multiDistFit
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Compares fits of parametric probability distributions
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Joshua W. Lambert
+Maintainer: Joshua W. Lambert <joshua.lambert@lshtm.ac.uk>
+Description: Lots of R packages are developed to fit probability distributions,
+    this packages allows for comparison of different candidate models using 
+    fitting procedures from other packages.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
-Imports: fitdistrplus
+Imports: 
+    fitdistrplus,
+    coarseDataTools
 Suggests: 
     covr,
     testthat (>= 3.0.0)
