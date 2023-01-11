@@ -27,3 +27,15 @@ test_that("goodness_of_fit works as expected on vector", {
   )
   expect_s3_class(res, "gofstat.fitdist")
 })
+
+test_that("multi_fitdist works as expected on vector", {
+  library(coarseDataTools)
+  data("nycH1N1")
+  res <- multi_fitdist(
+    data = nycH1N1,
+    models = c("lnorm", "weibull")
+  )
+  expect_s3_class(res, "data.frame")
+  expect_equal(nrow(res), 2)
+  expect_equal(ncol(res), 4)
+})
