@@ -4,7 +4,11 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/joshwlambert/multiDistFit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/joshwlambert/multiDistFit/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/joshwlambert/multiDistFit/branch/main/graph/badge.svg)](https://app.codecov.io/gh/joshwlambert/multiDistFit?branch=main)
+[![Lifecycle: deprecated](https://img.shields.io/badge/lifecycle-deprecated-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#deprecated)
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
 <!-- badges: end -->
+
+### This package is a proof-of-concept and is now deprecated. To use the functionality to fit multiple distribution models see the [`{quickfit}`](https://github.com/epiverse-trace/quickfit) package as part of the [Epiverse](https://data.org/initiatives/epiverse/) initiative.
 
 The goal of multiDistFit is to allow comparison of multiple model comparison 
 when fitting distributions to censorred and non-censorred data. The package is
